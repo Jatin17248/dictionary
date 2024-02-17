@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary</title>
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />-->
+	<link href="style.css" rel="stylesheet" />
+	<style>
+	tr{
+  border-bottom: 3px solid green!important; /* Adjust the color and style as needed */
+  margin-bottom:4px;
+  padding:2px;
+}
+	</style>
+  </head>
+  <body><div class="view1">
+    <div class="container">
+      <h2>Dictionary</h2>
+      <form>
+        <div class="amount">
+          <p>Enter Any Word</p>
+          <input value="" placeholder="Any Text Like 'Hello' or 'Develop'" type="text" id="wrd"/>
+        </div>
+        <!--<div class="dropdown">
+          <div class="from">
+            <p>From</p>
+            <div class="select-container">
+              <img src="https://flagsapi.com/IN/flat/64.png" />
+              <select name="from"></select>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          <div class="to">
+            <p>To</p>
+            <div class="select-container">
+              <img src="https://flagsapi.com/RU/flat/64.png" />
+              <select name="to"></select>
+            </div>
+          </div>
+        </div>-->
+        <div class="msg"></div>
+		<p class="msg1">Define Any Word Now!!</p>
+        <button id="sbmt"><p class="g-text">Define Now!</p></button>
+		<a id="own"  href ="mailto:jatinsood242@gmail.com"><p class="g-text">Developed by Jatin Sood</p></a>
+      </form>
+    </div>
+  </div><div class="view2">
+    <div class="container1">
+	<table id="btmhrtbl"> <!--border="2">-->
+	<tr><td colspan="2" align="center"><h2 class="word">word</h2></td></tr>
+	 <tr><td class="param">Definition: </td><td><p class="definition ans"> </p></td></tr>
+	 <tr><td class="param">Part Of Speech: </td><td><p class="pos ans"> </p></td></tr>
+	 <tr><td  class="param">Example: </td><td><p class="example ans"> </p></td></tr>
+	 <tr><td class="param">Synonyms:</td><td><p class="synonyms ans"> </p></td></tr>
+	 <tr><td  class="param">Antonyms: </td><td><p class="antonyms ans"> </p></td></tr>
+	 <!--<tr style="background-color:red; height:30px;">-->
+	 <tr id="audiobtnrow">
+	 <td class="param"><B>
+	 <p id="audioText"></p></B></td>
+	 <td id="adiobtnbx"><audio id="myAudio" onended="audioEnded()" src="be_mine.mp3">
+  Your browser does not support the audio element.
+</audio>
+<button id="playbtn" onclick="toggleAudio()" ><i class="fa-solid fa-circle-play g-text"></i></button>
+</td>
+	 </tr>
+	 <tr class="NotDisplayed"><td colspan="2"><p>Oh! oh! 
+	 No Definitions Found <br>
+	 Sorry, we couldn't find definitions for the word you were looking for.<br>
+	 You can try the search again at later time or head to the web instead.
+	 </p></td></tr>
+  
+	</table>
+	</div>
+	<button id="goToTopBtn"><i class="fa-solid fa-arrows-up-to-line"></i>&nbsp;Search Again&nbsp;<i class="fa-solid fa-arrows-up-to-line"></i></button>
+   </div>
+   
+    <script src="dict.js"></script>
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', () => {
+  var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
+   if(disclaimer){
+       disclaimer.remove();
+   }  
+ });
+	</script>
+  </body>
+  
+</html>

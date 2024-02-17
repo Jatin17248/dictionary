@@ -166,9 +166,6 @@ box-shadow: inset 3px 3px 4.5px #718c6c,
             color: transparent;
 			  font-weight: bold; 
 }
-a{
-	visibility: hidden !important;
-}
 #own{
 	border-radius: 11px;
 	background: linear-gradient(145deg, #b2ddaa, #d4ffca);
@@ -269,4 +266,137 @@ box-shadow:  7px 7px 22px #a0c699,
    background-color: #cdbfee;
    border: 1px solid #c6f5bd;
    color: #c6f5bd;
+}
+
+#pbc{
+	visibility: visible;
+	font-size: 13px;
+    display: block ;
+    height: 55px;
+    position: fixed ;
+    bottom: 0px ;
+    left: 10px;
+    right: 0px ;
+    width: 215px ;
+    z-index: 2;
+	border: 1px solid #2e247d;
+	border-bottom:none;
+	background-color: #2e247d;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	box-shadow: 3px 3px 11px #211a5a,
+             -3px -3px 11px #ffffff;/*#3b2ea0;*/
+}
+
+#pbc:hover{
+	/*visibility: visible ;*/
+	border-bottom:2px solid blue;
+    display: block;
+    height: 288px;
+    position: fixed;
+    bottom: 0px;
+    left: 10px;
+    right: 0px;
+    z-index: 2;
+}
+
+  /*.powered-by {
+    font-family: SQMarket-Medium,SQMarket,"Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 13px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: #3374FF;
+    width: 280px;
+    text-align: center;
+    
+    letter-spacing: 1px;
+	
+  }*/
+ 
+  .footer-published-ab-powered-by{
+	font-size: 13px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: #3374FF;
+    width: 280px;
+    text-align: center;
+    
+    letter-spacing: 1px;
+	color: black;  
+  }
+  
+  .footer-ab-published-toast-image{
+	   height: auto;
+    width: 216px;
+    
+	
+    visibility: visible !important;
+    display: block !important;
+	
+    border: none;
+  }
+  
+  .logoimg{
+	vertical-align: middle;
+	visibility: visible;
+    display: inline-block;
+    height: 35px;
+    width: 76px;
+    background-image: url('1687370118788.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: brightness(0) invert(1);
+  }
+ 
+.footer-ab-published-toast-button-wrapper {
+    
+    
+	visibility: visible !important;
+    display: block !important;
+    visibility: visible !important;
+    display: block !important;
+}
+.footer-published-ab-button {
+    /*margin: 0 auto;*/
+    color: #FFF;
+    font-family: SQMarket-Medium,SQMarket,"Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    height: 30px;/*auto;*/
+    
+    display: inline-block;
+    text-align: center;
+    line-height: 28px;
+    outline: 0;
+    box-sizing: content-box;
+    font-weight: 500;
+    cursor: pointer;
+    background: #134DC7;
+    border-radius: 4px;
+    /*height: 40px;*/
+    max-width: 216px;
+    width: 216px;
+	
+	
+    border-color: #134DC7;
+}
+
+.footer-published-ab-button:hover {
+    background-color: #1245b3;
+}
+
+.powered{
+    font-size: 20px;
+	color:white;
+    padding-top: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+    line-height: 59px;
+}
+
+.ubuntu-regular {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

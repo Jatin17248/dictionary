@@ -2,6 +2,7 @@ let pdefinition = document.querySelector('.definition');
 let pexample = document.querySelector('.example');
 let psynonyms = document.querySelector('.synonyms');
 let pantonyms = document.querySelector('.antonyms');
+let ptranslated = document.querySelector('.translated');
 let ppos = document.querySelector('.pos');
 let pword = document.querySelector('.word');
 let NotDisplayed = document.querySelector('.NotDisplayed');
@@ -14,6 +15,7 @@ var audio = document.getElementById("myAudio");
 var playBtn = document.getElementById("playbtn");
 let view2 = document.querySelector('.view2');
 let audiobtnrow = document.querySelector('#audiobtnrow');
+const dropdown = document.querySelector('select');
   
   function toggleAudio() {
     if (audio.paused) {
@@ -28,23 +30,26 @@ let audiobtnrow = document.querySelector('#audiobtnrow');
 	function audioEnded(){
 		playBtn.innerHTML='<i class="fa-solid fa-play g-text"></i>';
 	}
-/*  // Example of dynamically changing the source (you can call this with your API endpoint)
-  function changeSource(newSource) {
-    audio.src = newSource;
-    audio.load(); // Load the new source
-    audio.play(); // Play the audio
-  }
-*/
+	
+	for(code in countries ) {
+	let newOption = document.createElement("option");
+	newOption.innerText = countries[code];
+	newOption.value = code;
+	dropdown.append(newOption);
+	if(code === "hi-IN"){
+		newOption.selected = "selected";
+	}	
+	}
+	
 sbmt.addEventListener('click', async (evt) =>{
 	evt.preventDefault();
 	let wrd = document.querySelector('#wrd');
-	//console.log(wrd.value);
 	let word = wrd.value;
 	if (word === '' || word <= 0){
 		word = 'development';
-		
 	}
-	
+	document.querySelector(".loader").style.display = "block";
+    document.querySelector(".container1").style.display = "none";
 	pword.innerText = '';
 	ppos.innerText = '';
 	pdefinition.innerText = '';
@@ -53,44 +58,49 @@ sbmt.addEventListener('click', async (evt) =>{
 	pantonyms.innerText = '';
 	audio.src = 'be_mine.mp3';
 	paudioText.innerHTML = '';
-	
   const URL = `${BASE_URL}/${word.toLowerCase()}`;
 	document.body.style.height = "200vh";
 	view2.style.display="flex";
-	
-	window.scrollTo({
+	setTimeout(function () {
+    document.querySelector(".loader").style.display = "none";
+    document.querySelector(".container1").style.display = "flex";
+  }, 2000);
+  window.scrollTo({
   top: window.innerHeight,  // 100vh
   behavior: 'smooth'        // Smooth scrolling
-});
-//	msg1.innerText = `From ${data1[fromCur.value.toLowerCase()]} To ${data1[toCur.value.toLowerCase()]} \n As On ${AsPer}`;
-	//msg.innerText = `${amount} ${fromCur.value} = ${amount*rate} ${toCur.value}`; */
-	
-	
-	
+	});
 
 try {
+	
   let response = await fetch(URL)
   
   let data = await response.json();
-
+	
   let definition = data[0].meanings[0].definitions[0].definition;
    let pos = data[0].meanings[0].partOfSpeech;
   let example = data[0].meanings[0].definitions[0].example;
   let synonyms = data[0].meanings[0].definitions[0].synonyms;
   let antonyms = data[0].meanings[0].definitions[0].antonyms;
-  let newAudioLink = data[0].phonetics[0].audio;	//.meanings[0].definitions[0].antonyms;
+  let newAudioLink = data[0].phonetics[0].audio;	
   let audioText = data[0].phonetics[0].text;
-
+  console.log(dropdown.value);
+  await translate(word, dropdown.value);
   await updateAllElements(word, pos, definition, example, synonyms, antonyms, audioText, newAudioLink);
   let count = 0;
+  
   await NeverShowUndefined(count);
   
 } catch (error) {
 	pword.innerText = word.toLowerCase();
+	await translate(word, dropdown.value);
 	await NeverShowUndefined(6);
 	console.error('Error fetching data:', error);
 }
 
+  });
+  
+  dropdown.addEventListener("change", (evt) => {
+		  translate(pword.innerText, evt.target.value);
   });
   
   
@@ -103,6 +113,7 @@ try {
 	pantonyms.innerText = antonyms;
 	audio.src = newAudioLink;
 	paudioText.innerHTML = audioText;
+	
 	if(paudioText.innerHTML === "" || paudioText.innerHTML == "undefined"){
 		paudioText.innerHTML = pword.innerText;
 	}
@@ -133,26 +144,14 @@ try {
 
   }
   
-  /*
-  for( select of dropdowns){
+  
+  /*for(select of dropdown){
 	  select.addEventListener("change", (evt) => {
-		flagChange(evt.target);
-	});
-	for(code in countryList ) {
+		  console.log('valueChanged');
+	//	evt.target;
+		//abc=evt;
+  });}*/
 	
-	let newOption = document.createElement("option");
-	newOption.innerText = code;
-	newOption.value = code;
-	select.append(newOption);
-	if(select.name === "from" && code === "INR"){
-		newOption.selected = "selected";
-	}
-	if(select.name === "to" && code === "RUB"){
-		newOption.selected = "selected";
-	}
-	
-	}
-  }*/
   
   document.addEventListener("DOMContentLoaded", function () {
     var goToTopBtn = document.getElementById("goToTopBtn");
@@ -170,3 +169,15 @@ try {
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
 });
+
+
+
+const translate = async (word, toLang) => {
+let apiUrl = `https://api.mymemory.translated.net/get?q=${word}&langpair=en-GB|${toLang}`;	
+	let resTrans = await fetch(apiUrl)
+  
+  let translation = await resTrans.json();
+  ptranslated.innerText = translation.responseData.translatedText;
+
+}
+

@@ -32,23 +32,7 @@
           <p>Enter Any Word</p>
           <input value="" placeholder="Any Text Like 'Hello' or 'Develop'" type="text" id="wrd"/>
         </div>
-        <!--<div class="dropdown">
-          <div class="from">
-            <p>From</p>
-            <div class="select-container">
-              <img src="https://flagsapi.com/IN/flat/64.png" />
-              <select name="from"></select>
-            </div>
-          </div>
-          <i class="fa-solid fa-arrow-right-arrow-left"></i>
-          <div class="to">
-            <p>To</p>
-            <div class="select-container">
-              <img src="https://flagsapi.com/RU/flat/64.png" />
-              <select name="to"></select>
-            </div>
-          </div>
-        </div>-->
+        
         <div class="msg"></div>
 		<p class="msg1">Define Any Word Now!!</p>
         <button id="sbmt"><p class="g-text">Define Now!</p></button>
@@ -56,10 +40,13 @@
       </form>
     </div>
   </div><div class="view2">
+  <span class="loader"></span>
     <div class="container1">
 	<table id="btmhrtbl"> <!--border="2">-->
 	<tr><td colspan="2" align="center"><h2 class="word">word</h2></td></tr>
+	<!--<tr><td colspan="2" align="center" height="15px" width="15px"><center></td></tr>--->
 	 <tr><td class="param">Definition: </td><td><p class="definition ans"> </p></td></tr>
+	 <tr><td class="param">Translation in <select></select> </td><td><p class=" translated">abc </p></td></tr>
 	 <tr><td class="param">Part Of Speech: </td><td><p class="pos ans"> </p></td></tr>
 	 <tr><td  class="param">Example: </td><td><p class="example ans"> </p></td></tr>
 	 <tr><td class="param">Synonyms:</td><td><p class="synonyms ans"> </p></td></tr>
@@ -116,8 +103,9 @@
 	</a>
 </div>
 -->
-   
+       <script src="countries.js"></script>
     <script src="dict.js"></script>
+
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', () => {
   var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
